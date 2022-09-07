@@ -24,12 +24,22 @@ a,
 @media (min-width: 1024px) {
   body {
     display: flex;
-    place-items: center;
+    margin-top: 9rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
   }
 
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    display: flex;
+    padding: 0 5rem;
+    gap: 3rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
   }
 }
