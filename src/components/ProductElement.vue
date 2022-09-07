@@ -8,13 +8,14 @@
       <p><span class="bold">Stock: </span>{{stock}}</p>
     </div>
     <div>
-      <button class="delete" @click="handleDelete">X</button>
+      <button class="button" @click="handleEdit">E</button>
+      <button class="button delete" @click="handleDelete">D</button>
     </div>    
   </div>
 
   </template>
   
-    <script lang="ts">
+    <script lang="js">
 import reGetProducts from '@/services/reGetProducts';
 
       export default {
@@ -23,6 +24,9 @@ import reGetProducts from '@/services/reGetProducts';
        name:String,
        stock:Number
      }, methods:{
+      handleEdit(){
+        this.$router.push(`/edit/${this.id}`)
+      },
       async handleDelete(){
         console.log('trying to delete ', this.id)
             await fetch(`http://localhost:3000/${this.id}`, {
@@ -69,14 +73,20 @@ min-height:80px;
     display: flex;
     flex-direction: column
   }
-  .delete{
+  .button{
+    background-color: rgb(255, 255, 255);
+color:black;
     border-radius: 20px;
     border:none;
     outline:none;
     width:30px;
     height:30px;
   }
-  .delete:hover{
+  .delete{
+    background-color: rgb(155, 70, 70);
+    color:white;
+  }
+  .button:hover{
     cursor: pointer;
     transform: scale(0.9);
     background-color: rgb(213, 216, 214);

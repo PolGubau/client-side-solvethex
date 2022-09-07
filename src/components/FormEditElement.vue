@@ -11,19 +11,32 @@
 
   <script lang="js">
 import reGetProducts from "@/services/reGetProducts";
-
-    
-export default{
+  import axios from 'axios';
+  
+export default {
     data(){
         return {
-      name: '',
+          id: this.$route.params.id,
+
+      name: 'Loading...',
       stock: undefined ,
         }
 },
+    
+    created() {
+      reGetProducts()
+      axios.get(`http://localhost:3000/${this.id}`)
+      .then(res => {
+        this.name = res.data.name
+        this.stock = res.data.stock
+      })
+      .catch(err => console.log(err))
+    },
+    
     methods: {
         async submit(){
-            await fetch('http://localhost:3000/', {
-                method: 'POST',
+            await fetch(`http://localhost:3000/${this.id}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -39,12 +52,7 @@ export default{
             this.$router.push('/')
         }
     }
-    
-    
-   
-    
-    
-    
+
 }
 
   </script>

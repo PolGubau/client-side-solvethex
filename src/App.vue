@@ -12,7 +12,6 @@ import HelloWorld from './components/HelloWorld.vue'
       <nav>
         <RouterLink to="/">Ver Datos</RouterLink>
         <RouterLink to="/add"> Añadir Datos</RouterLink>
-        <RouterLink to="/edit">Editar Datos</RouterLink>
       </nav>
     </div>
   </header>

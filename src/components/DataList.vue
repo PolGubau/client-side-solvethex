@@ -16,19 +16,15 @@
 </template>
 
 
-<script lang="ts">
+<script lang="js">
 import Producto from "./ProductElement.vue";
 import reGetProducts from "@/services/reGetProducts";
 
 export default {
     data:() => ({
-        result: null as any
+        result: null
     }),
-    methods: {
-        async handleClick(){
-            reGetProducts()
-        }
-    },
+    
     created() {
       reGetProducts()
         const products =localStorage.getItem('products');
