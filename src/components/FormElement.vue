@@ -20,10 +20,12 @@ export default{
 },
     methods: {
         async submit(){
+          const token = localStorage.getItem('token')
             await fetch('http://localhost:3000/', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'authorization': token
                 },
                 body: JSON.stringify({
                     name: this.name,

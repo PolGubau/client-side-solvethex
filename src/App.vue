@@ -11,6 +11,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
       <nav>
         <RouterLink to="/">Ver Datos</RouterLink>
+        <RouterLink to="/token"> Conseguir token</RouterLink>
         <RouterLink to="/add"> Añadir Datos</RouterLink>
       </nav>
     </div>

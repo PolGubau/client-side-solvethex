@@ -25,7 +25,11 @@ export default {
     
     created() {
       reGetProducts()
-      axios.get(`http://localhost:3000/${this.id}`)
+      axios.get(`http://localhost:3000/${this.id}`,{
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      })
       .then(res => {
         this.name = res.data.name
         this.stock = res.data.stock
@@ -35,10 +39,12 @@ export default {
     
     methods: {
         async submit(){
+          const token= localStorage.getItem('token')
             await fetch(`http://localhost:3000/${this.id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'authorization': token
                 },
                 body: JSON.stringify({
                     name: this.name,

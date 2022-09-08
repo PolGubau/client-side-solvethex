@@ -1,4 +1,7 @@
 <template>
+  <p v-if="token">Tu token es {{token}}</p>
+
+  <div v-else>
   <p>Consigue un token</p>
 <form class="form">
     <div class="info">
@@ -6,9 +9,11 @@
 </div>
   <button type="submit" @click.stop.prevent="submit()" class="button">+</button>
 </form>
+</div>
   </template>
 
   <script lang="js">
+import axios from 'axios'
 
 export default{
     data(){
@@ -17,29 +22,27 @@ export default{
       token: undefined ,
         }
 },
+created(){
+    const token = localStorage.getItem('token');
+    if(token){
+        this.token = token;
+    }
+},
+
     methods: {
         async submit(){
-            await fetch('http://localhost:3000/auth', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  username: this.username,
-                })
+           
+            axios.post('http://localhost:3000/auth', {
+                username: this.username,
             })
             .then((res)=>{
-              res.json()              
-              console.log(res)
-            }).then((data)=>{
-              console.log(data)
-              // localStorage.setItem('token', data.token)
-              this.$router.push('/')
+              localStorage.setItem('token', res.data.data)
+              this.token = res.data.data
+            }).then(()=>{
+              window.location.reload()
             })
-              
-            .catch(err => console.log(err))
+            .catch(err =>  console.log('Error',err))
           
-            
         }
     }
     

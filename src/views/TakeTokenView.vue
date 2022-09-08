@@ -2,19 +2,20 @@
 
 <template>
   <main>
-    <DataList /> 
+    <TakeToken /> 
   </main>
 </template>
 
 
 
 <script lang="ts">
-import DataList from '../components/DataList.vue'
-
- export default {components: { DataList}}
-</script>
-
-
+  import TakeToken from '../components/TakeToken.vue'
+  
+   export default {
+        components: { TakeToken} 
+   }
+    
+    </script>
 
 <style scoped>
 main {

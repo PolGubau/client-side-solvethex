@@ -32,7 +32,8 @@ import reGetProducts from '@/services/reGetProducts';
             await fetch(`http://localhost:3000/${this.id}`, {
                 method: 'DELETE',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'authorization': localStorage.getItem('token')
                 },
                 
             }).then(()=>{reGetProducts(); window.location.reload()})
