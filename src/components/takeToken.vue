@@ -1,43 +1,44 @@
 <template>
+  <p>Consigue un token</p>
 <form class="form">
     <div class="info">
-  <input type="text" name="name" v-model="name" placeholder="Nombre del producto">
-  <input type="number" name="stock" v-model="stock" placeholder="Stock del producto">
+  <input type="text" name="name" v-model="username" placeholder="Escribe tu nombre">
 </div>
   <button type="submit" @click.stop.prevent="submit()" class="button">+</button>
 </form>
   </template>
 
   <script lang="js">
-import reGetProducts from "@/services/reGetProducts";
 
 export default{
     data(){
         return {
-      name: '',
-      stock: undefined ,
+      username: '',
+      token: undefined ,
         }
 },
     methods: {
         async submit(){
-            await fetch('http://localhost:3000/', {
+            await fetch('http://localhost:3000/auth', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: this.name,
-                    stock: this.stock
+                  username: this.username,
                 })
             })
-            .then(()=>{
-              reGetProducts(); 
-             alert('Producto añadido')
+            .then((res)=>{
+              res.json()              
+              console.log(res)
+            }).then((data)=>{
+              console.log(data)
+              // localStorage.setItem('token', data.token)
+              this.$router.push('/')
             })
               
             .catch(err => console.log(err))
-            this.name='';
-            this.stock=undefined;
+          
             
         }
     }

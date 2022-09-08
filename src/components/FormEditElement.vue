@@ -48,8 +48,7 @@ export default {
             this.name='';
             this.stock=undefined;
             reGetProducts()
-            //redirect to home
-            this.$router.push('/')
+            
         }
     }
 

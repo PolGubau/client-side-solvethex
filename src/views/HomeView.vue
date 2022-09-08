@@ -1,13 +1,21 @@
-<script setup lang="ts">
-import DataList from '../components/DataList.vue'
-</script>
+
 
 <template>
   <main>
-    <DataList />
+    <DataList /> 
   </main>
 </template>
 
+
+
+<script lang="ts">
+import DataList from '../components/DataList.vue'
+
+ export default {
+      components: { DataList} 
+ }
+  
+  </script>
 
 <style scoped>
 main {

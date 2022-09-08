@@ -12,6 +12,12 @@
   </div>
   <div v-else class="content">
     <p>Loading...</p>
+  </div>  
+  <div v-if="noToken" class="content">
+    <div>
+    You don't have a token yet
+    <TakeToken />
+  </div>
   </div>
 </template>
 
@@ -19,23 +25,28 @@
 <script lang="js">
 import Producto from "./ProductElement.vue";
 import reGetProducts from "@/services/reGetProducts";
-
+import TakeToken from "./TakeToken.vue";
 export default {
     data:() => ({
-        result: null
+        result: null,
+        noToken: false
     }),
     
     created() {
       reGetProducts()
         const products =localStorage.getItem('products');
+        if(!products){
+            this.noToken = true;
+        }else{
         const productsJson = JSON.parse(products ? products : '');
         
         console.log(productsJson)
         
         this.result = productsJson
+      }
       },
       
-    components: { Producto }
+    components: { Producto,TakeToken }
 };  
 
 

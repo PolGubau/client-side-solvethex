@@ -8,7 +8,7 @@ defineProps<{
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
     <h3>
-      Aqui se muestran los datos generados por la API. En las opciones de abajo puedes editarlos o borrarlos.
+      Aqui se muestran los datos generados por la API. En las opciones de abajo puedes editarlos, borrarlos o añadir nuevos.
     </h3>
   </div>
 </template>

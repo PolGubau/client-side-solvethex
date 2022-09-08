@@ -35,7 +35,7 @@ import reGetProducts from '@/services/reGetProducts';
                     'Content-Type': 'application/json'
                 },
                 
-            }).then(()=>reGetProducts())
+            }).then(()=>{reGetProducts(); window.location.reload()})
             .catch(err => console.log(err))
         }
      }
