@@ -7,9 +7,9 @@
       <p><span class="bold">Nombre:</span> {{name}}</p>
       <p><span class="bold">Stock: </span>{{stock}}</p>
     </div>
-    <div>
-      <button class="button" @click="handleEdit">E</button>
-      <button class="button delete" @click="handleDelete">D</button>
+    <div class="buttonsContainer">
+      <button class="button" @click="handleEdit">Edit</button>
+      <button class="button delete" @click="handleDelete">Delete</button>
     </div>    
   </div>
 
@@ -73,23 +73,36 @@ min-height:80px;
     display: flex;
     flex-direction: column
   }
+  .buttonsContainer{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap:2px
+    
+  }
   .button{
     background-color: rgb(255, 255, 255);
 color:black;
     border-radius: 20px;
     border:none;
+    padding: 0px 10px;
+    width: 100%;
     outline:none;
-    width:30px;
-    height:30px;
+
   }
   .delete{
-    background-color: rgb(155, 70, 70);
+    background-color: rgb(218, 47, 47);
     color:white;
   }
+  
   .button:hover{
     cursor: pointer;
     transform: scale(0.9);
     background-color: rgb(213, 216, 214);
+  }
+  .delete:hover{
+    background-color: rgb(255, 147, 147);
+    color:white;
   }
   </style>
   

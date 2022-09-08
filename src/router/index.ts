@@ -10,14 +10,13 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
-    },
-    {
+    },{
       path: '/add',
       name: 'insert',
       component: InsertView
     },{
       path: '/edit/:id',
-      name: 'insert',
+      name: 'edit',
       component: EditView
     },{
       // default page:

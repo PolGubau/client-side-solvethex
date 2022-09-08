@@ -4,6 +4,6 @@
 
 <template>
   <main>
-      <FormElement />
+      <FormElement /> 
 </main>
 </template>
